@@ -1,0 +1,35 @@
+<%= nested_form_for(@user,:html => {:multipart => true} ) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :age %><br>
+    <%= f.number_field :age %>
+  </div>
+    ---------------(Image cant be blank)-----------------------------
+  <%= f.fields_for :attachments do |attachForm| %>
+  <div class="field">
+    <%= attachForm.label :ImageName %><br>
+    <%= attachForm.text_field :name %><%= attachForm.file_field :image  %>
+  </div>
+  <%= attachForm.link_to_remove "Remove this Image" %>
+  
+  <% end %>
+  <p><%= f.link_to_add "Add new image", :attachments %></p>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

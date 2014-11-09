@@ -1,0 +1,12 @@
+== README
+
+Rails 4 with carrier wave image uploading using Nested form :-
+
+1)User model add images to Attachment model using nested form
+
+2)Product Model add multiple images with a single field 
+
+3)Article uses Drop zone to add multiple images
+
+above 3 model uses Attachment model for adding multiple images
+

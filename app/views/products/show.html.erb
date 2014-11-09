@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %>
+</p>
+
+<p>
+  <strong>Image:</strong>
+  <% if @product.attachments.count > 0 %>
+  	<% @product.attachments.each do |a| %>
+  	<%= image_tag a.image,:size => "20x20" %>
+  	<% end %>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>

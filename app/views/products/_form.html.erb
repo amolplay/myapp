@@ -1,0 +1,45 @@
+<%= form_for(@product,:html => {:multipart => true} ) do |f| %>
+  <% if @product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+      <ul>
+      <% @product.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :price %><br>
+    <%= f.text_field :price %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= file_field_tag "product[image][]",:multiple => true %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+
+
+<!--
+
+"image"=>[#<ActionDispatch::Http::UploadedFile:0xb8a4fd40 @tempfile=#<Tempfile:/tmp/RackMultipart20141109-29836-6plorm>, @original_filename="nature-landscapes_hdwallpaper_natural-beauty_6696.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"product[image][]\"; filename=\"nature-landscapes_hdwallpaper_natural-beauty_6696.jpg\"\r\nContent-Type: image/jpeg\r\n">, 
+#<ActionDispatch::Http::UploadedFile:0xb8a4fb24 @tempfile=#<Tempfile:/tmp/RackMultipart20141109-29836-54clcf>, @original_filename="Bridal-bouquets-2012-014.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"product[image][]\"; filename=\"Bridal-bouquets-2012-014.jpg\"\r\nContent-Type: image/jpeg\r\n">, #<ActionDispatch::Http::UploadedFile:0xb8a4f9e4 @tempfile=#<Tempfile:/tmp/RackMultipart20141109-29836-1vlps7c>, @original_filename="Beauty-of-nature-daydreaming-23013585-1024-768.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"product[image][]\"; filename=\"Beauty-of-nature-daydreaming-23013585-1024-768.jpg\"\r\nContent-Type: image/jpeg\r\n">]}, "commit"=>"Update Product", "id"=>"1"}
+
+ "image"=>[{"0"=>#<ActionDispatch::Http::UploadedFile:0xb846e19c @tempfile=#<Tempfile:/tmp/RackMultipart20141109-32551-j9llsh>, @original_filename="nature-landscapes_hdwallpaper_natural-beauty_6696.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"article[image][][0]\"; filename=\"nature-landscapes_hdwallpaper_natural-beauty_6696.jpg\"\r\nContent-Type: image/jpeg\r\n">,
+  "1"=>#<ActionDispatch::Http::UploadedFile:0xb846de68 @tempfile=#<Tempfile:/tmp/RackMultipart20141109-32551-1r57uaw>, @original_filename="Bridal-bouquets-2012-014.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"article[image][][1]\"; filename=\"Bridal-bouquets-2012-014.jpg\"\r\nContent-Type: image/jpeg\r\n">}]}, "null"=>"", "id"=>"1"}
+
+
+
+
+--->
